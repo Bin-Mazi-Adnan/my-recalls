@@ -1,0 +1,19 @@
+# manifests/init.pp
+
+# Update package repositories
+exec { 'apt-update':
+  command => '/usr/bin/apt update',
+}
+
+# Install Nginx package
+package { 'nginx':
+  ensure => installed,
+  require => Exec['apt-update'],
+}
+
+# Start Nginx service
+service { 'nginx':
+  ensure => running,
+  enable => true,
+  require => Package['nginx'],
+}
