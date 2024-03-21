@@ -1,0 +1,11 @@
+# Dockerfile
+
+# Use a base image
+FROM ubuntu:20.04
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y package1 package2
+
+# Set up configurations
+COPY config.conf /etc/config/
